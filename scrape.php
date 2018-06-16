@@ -2,8 +2,11 @@
 
 require 'vendor/autoload.php';
 use \Mailjet\Resources;
-$dotenv = new Dotenv\Dotenv(__DIR__);
-$dotenv->load();
+
+if (file_exists('.env')) {
+  $dotenv = new Dotenv\Dotenv(__DIR__);
+  $dotenv->load();
+}
 
 $mailjet_apikey = getenv('MAILJET_API_KEY');
 $mailjet_apisecret = getenv('MAILJET_API_SECRET');
